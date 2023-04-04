@@ -1,19 +1,25 @@
+import logo from "./logo.svg";
 import "./App.css";
-
-import { View } from "react-native-web";
-import { Button } from "my-component-library";
+import { Button } from "component-library/web";
 
 function App() {
-  const onClick = (e) => {
-    console.log(e);
-    console.log("button click");
-  };
-
   return (
     <div className="App">
-      <View>
-        <Button onClick={onClick} />
-      </View>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <Button>asdasd</Button>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
