@@ -1,12 +1,13 @@
 const path = require("path");
+const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 
-module.exports = {
+const prodConfig = {
   mode: "production",
   entry: path.join(__dirname, "src/index.js"),
   output: {
     filename: "bundle.web.js",
     path: path.join(__dirname, "/web/build"),
-    library: "our-components-library",
+    library: "component-library",
     libraryTarget: "umd",
     umdNamedDefine: true,
   },
@@ -59,4 +60,14 @@ module.exports = {
       root: "ReactDOM",
     },
   },
+};
+
+module.exports = async function (env, argv) {
+  if (env.production) {
+    return prodConfig;
+  }
+
+  const config = await createExpoWebpackConfigAsync(env, argv);
+
+  return config;
 };
